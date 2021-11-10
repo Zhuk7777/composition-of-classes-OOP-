@@ -1,5 +1,7 @@
 #pragma once
-#include"Child.h"
+#include<string>
+#include "Child.h"
+
 class Group {
 	int number, count;
 	string FIO;
@@ -7,12 +9,18 @@ class Group {
 		Child data;
 		Node* next;
 	};
-	Node* List;
+	Node* list;
+
 	void addToHead(Child& x);
-	void addAfterNode(Child& x, Node* Pnode);
+	void addAfterNode(Child& x, Node* pNode);
+	void deleteFromHead();
+	void deleteAfterNode(Node* pNode);
 	Node* findPlaceChild(Child& x);
+
 public:
+	Group();
 	Group(int n, string s);
+	~Group();
 	void setNumber(int n);
 	void setFIO(string s);
 	int getNumber();
@@ -21,5 +29,7 @@ public:
 	Node* getList();
 	void insert(Child& x);
 	void remove(Child& x);
-	friend std::ostream& operator<< (std::ostream& out, const Group& obj);
+	friend ostream& operator<<(ostream& out, Group& obj);
+	void clearGroup();
+	bool findChild(Child& x);
 };
